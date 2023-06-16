@@ -6,7 +6,8 @@
         <li :class="{ 'active': activeLink === 'contact' }"><a @click="navigate('#contact', 'contact')">Contact</a></li>
         <li :class="{ 'active': activeLink === 'about' }"><a @click="loadAbout">About</a></li>
         <li :class="{ 'active': activeLink === 'addcustomer' }"><a @click="loadAddCustomer">Add Customer</a></li>
-     
+        <li v-if="!$store.state.isLoggedIn" :class="{ 'active': activeLink === 'login' }"><a @click="loadLogin">Login</a></li>
+        <li v-if="$store.state.isLoggedIn"><a @click="loadLogout">Logout</a></li>
       </ul>
     </div>
   </template>
@@ -47,6 +48,16 @@
       loadAddCustomer() {
         this.activeLink = 'addcustomer';
         this.$emit('navigateToAddCustomer');
+      },
+      loadLogin() {
+        this.activeLink = 'login';
+        this.$emit('navigateToLogin');
+      }
+      ,
+      loadLogout() {
+        this.activeLink = 'login';
+        this.$store.commit('setLoggedIn', false);
+        this.$emit('navigateToLogin');
       }
     }
   };

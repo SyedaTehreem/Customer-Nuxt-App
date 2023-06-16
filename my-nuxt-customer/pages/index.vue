@@ -3,6 +3,7 @@
     <Navbar @navigateToAbout="loadAbout" @navigateToHome="loadHome"
      @navigateToCustomer="loadCustomer" @navigateToEditCustomer="loadEditCustomer"
      @navigateToAddCustomer="loadAddCustomer"
+     @navigateToLogin="loadLogin"
       />
     
     <Home v-if="showHome" />
@@ -10,7 +11,7 @@
     <CustomerList v-if="showCustomer" />
     <EditCustomer v-if="showEditCustomer" />
     <AddCustomer v-if="showAddCustomer" />    
-    
+    <LoginForm v-if="showLogin" /> 
 
   </div>
 </template>
@@ -22,6 +23,7 @@ import About from '~/components/About.vue';
 import CustomerList from '~/components/CustomerList.vue';
 import AddCustomer from '~/components/AddForm.vue';
 import EditCustomer from '~/components/EditCustomer.vue';
+import LoginForm from '~/components/LoginForm.vue';
 //==================
 export default {
   components: {
@@ -31,6 +33,7 @@ export default {
     CustomerList,
     EditCustomer,
     AddCustomer,
+    LoginForm,
    
   },
   data() {
@@ -40,6 +43,7 @@ export default {
       showCustomer: false,
       showEditCustomer: false,
       showAddCustomer: false,
+      showLogin: false,
     };
   },
   methods: {
@@ -49,6 +53,7 @@ export default {
       this.showCustomer = false;
       this.showEdiCustomer = false;
       this.showAddCustomer = false;
+      this.showLogin = false;
     },
     loadHome() {  //alert('Home');
       this.showHome = true;
@@ -56,7 +61,7 @@ export default {
       this.showCustomer = false;
       this.showEdiCustomer = false;
       this.showAddCustomer = false;
-
+      this.showLogin = false;
     },
     loadCustomer() {  //alert('Home');
       this.showHome = false;
@@ -64,7 +69,7 @@ export default {
       this.showCustomer = true;
       this.showEdiCustomer = false;
       this.showAddCustomer = false;
-
+      this.showLogin = false;
     },
     loadEditCustomer() {
     this.showHome = false;
@@ -72,7 +77,7 @@ export default {
     this.showCustomer = false;
     this.showEdiCustomer = true;
     this.showAddCustomer = false;
-
+    this.showLogin = false;
   },
   loadAddCustomer() {
     this.showHome = false;
@@ -80,8 +85,16 @@ export default {
     this.showCustomer = false;
     this.showEdiCustomer = false;
     this.showAddCustomer = true;
-
+    this.showLogin = false;
   },
+  loadLogin() {
+    this.showHome = false;
+    this.showAbout = false;
+    this.showCustomer = false;
+    this.showEdiCustomer = false;
+    this.showAddCustomer = false;
+    this.showLogin = true;
+  }
   }
 };
 </script>

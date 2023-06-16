@@ -1,5 +1,12 @@
 <template>
-    <div >
+    
+  <div v-if="!$store.state.isLoggedIn">
+    <!-- Render the customer list component here -->
+    <span class="error">You must be logged in to access this page...</span>
+    <LoginForm />
+  </div>
+  <div v-else>
+
       <h2>Edit Customer</h2>
       <form @submit="handleSubmit">
         <div>

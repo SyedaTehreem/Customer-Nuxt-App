@@ -1,5 +1,12 @@
 <template>
-    <div>
+
+  <div v-if="!$store.state.isLoggedIn">
+    <!-- Render the customer list component here -->
+    <span class="error">You must be logged in to access this page...</span>
+    <LoginForm />
+  </div>
+  <div v-else>
+    
       <h2>Customer List</h2>
   
       <table>
@@ -26,8 +33,7 @@
         </tbody>
       </table>
   
-      <!-- Render the dynamic content hhhhh -->
-      <router-view></router-view>
+     
     </div>
   </template>
   
