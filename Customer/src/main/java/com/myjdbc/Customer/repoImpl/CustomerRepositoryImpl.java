@@ -19,20 +19,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
     public CustomerRepositoryImpl(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
-   /* public List<CustomerInfo> findAll() {
-        String sql = "SELECT * FROM customer_info";
-        return jdbcTemplate.query(sql, (rs, rowNum) -> {
-            CustomerInfo customer = new CustomerInfo();
 
-            customer.setName(rs.getString("name"));
-            customer.setLast_name(rs.getString("last_name"));
-            customer.setCity(rs.getString("city"));
-            customer.setCountry(rs.getString("country"));
-            customer.setAddress(rs.getString("address"));
-
-            return customer;
-        });
-    }*/
 ///// Insert method
     public <S extends CustomerInfo> S save(S customer) {
         // Implement save logic here
