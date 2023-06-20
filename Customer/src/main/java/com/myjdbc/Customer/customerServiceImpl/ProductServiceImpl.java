@@ -22,6 +22,8 @@ public class ProductServiceImpl implements ProductService {
     public ProductServiceImpl(ProductRepository productRepository){
         this.productRepository = productRepository;
     }
+
+    
     public List<ProductInfo> getAllProducts() {
         Iterable<ProductInfo> productsIterable = productRepository.findAll();
         List<ProductInfo> productsList = StreamSupport.stream(productsIterable.spliterator(), false)
